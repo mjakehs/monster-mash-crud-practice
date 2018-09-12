@@ -12,6 +12,6 @@ exports.monsterPut = (req, res) => {
     res.send('Put Request');
 }
 
-exports.monsterDelete = (req, req) => {
+exports.monsterDelete = (req, res) => {
     res.send('Delete Request');
 }
