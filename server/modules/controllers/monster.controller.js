@@ -20,7 +20,13 @@ exports.monsterPost = (req, res) => {
 }
 
 exports.monsterPut = (req, res) => {
-    res.send('Put Request');
+    Monster.updateOne({_id: req.body._id}, req.body.update).then( (results) => {
+        console.log(results);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error: ', error);
+        res.sendStatus(500);
+    });
 }
 
 exports.monsterDelete = (req, res) => {

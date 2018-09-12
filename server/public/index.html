@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <script src="scripts/client.js"></script>
     <title>Monster Mash</title>
 </head>
+
 <body>
     <h1>Monster Mash</h1>
     <h2>Invite Monsters to your Monster Mash</h2>
@@ -15,5 +17,13 @@
     <input id="lethalityIn" placeholder="Lethality from 1 - 10" type="number">
     <button id="addMonsterButton">Send Invite</button>
     <ul id="guestList"></ul>
+    <form id="editForm" monster-id="" hidden>
+            <h3>Select your new inputs</h3>
+            <input id="nameEdit" placeholder="Monster Name" type="text">
+            <input id="lethalityEdit" placeholder="Lethality from 1 - 10" type="number">
+            <button id="submitEdit">Submit</button>
+            <button id="cancel">Cancel</button>
+    </form>
 </body>
+
 </html>
