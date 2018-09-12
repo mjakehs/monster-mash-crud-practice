@@ -5,6 +5,7 @@ exports.monsterGet = (req, res) => {
         res.send(results);
     }).catch( (error) => {
         console.log('Error: ', error);
+        res.sendStatus(500);
     });
 };
 
@@ -17,5 +18,11 @@ exports.monsterPut = (req, res) => {
 }
 
 exports.monsterDelete = (req, res) => {
-    res.send('Delete Request');
+    Monster.remove(req.body).then( (results) => {
+        console.log(results);
+        res.sendStatus(200);
+    }).catch( (error) => {
+        console.log('Error: ', error);
+        res.sendStatus(500);
+    });
 }
