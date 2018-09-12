@@ -1,8 +1,12 @@
 const Monster = require('../models/monster.model');
 
 exports.monsterGet = (req, res) => {
-    res.send('Get Request');
-}
+    Monster.find({}).then((results) => {
+        res.send(results);
+    }).catch( (error) => {
+        console.log('Error: ', error);
+    });
+};
 
 exports.monsterPost = (req, res) => {
     res.send('Post Request');
