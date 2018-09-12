@@ -3,14 +3,20 @@ const Monster = require('../models/monster.model');
 exports.monsterGet = (req, res) => {
     Monster.find({}).then((results) => {
         res.send(results);
-    }).catch( (error) => {
+    }).catch((error) => {
         console.log('Error: ', error);
         res.sendStatus(500);
     });
 };
 
 exports.monsterPost = (req, res) => {
-    res.send('Post Request');
+    Monster.create(req.body).then((results) => {
+        console.log(results);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log('Error: ', error);
+        res.sendStatus(500);
+    });
 }
 
 exports.monsterPut = (req, res) => {
@@ -18,10 +24,10 @@ exports.monsterPut = (req, res) => {
 }
 
 exports.monsterDelete = (req, res) => {
-    Monster.remove(req.body).then( (results) => {
+    Monster.remove(req.body).then((results) => {
         console.log(results);
         res.sendStatus(200);
-    }).catch( (error) => {
+    }).catch((error) => {
         console.log('Error: ', error);
         res.sendStatus(500);
     });

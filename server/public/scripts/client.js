@@ -1,9 +1,28 @@
 $(document).ready(readyNow);
 
+function inviteMonster(){
+    let objectToSend = {
+        name: $('#nameIn').val(),
+        lethality: $('#lethalityIn').val()
+    }
+    $.ajax({
+        method: 'POST',
+        url: '/monsters',
+        data: objectToSend
+    }).then(function(response){
+        console.log(response);
+        updateGuestList();
+    }).catch(function(error){
+        alert('Error in /monsters post');
+        console.log('Error: ', error);
+    });
+}
+
 function readyNow(){
     console.log('jq');
     updateGuestList();
     $('#guestList').on('click', '.deleteButton', uninviteMonster);
+    $('#addMonsterButton').on('click', inviteMonster);
 }
 
 function uninviteMonster(){
