@@ -31,7 +31,8 @@ exports.monsterPut = (req, res) => {
 }
 
 exports.monsterDelete = (req, res) => {
-    Monster.remove(req.body).then((results) => {
+    console.log(req.body);
+    Monster.deleteOne(req.body).then((results) => {
         console.log(results);
         res.sendStatus(200);
     }).catch((error) => {

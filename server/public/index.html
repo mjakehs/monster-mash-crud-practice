@@ -20,8 +20,8 @@
     <ul>
         <li ng-repeat="monster in vm.monsters">
             {{monster.name}} is attending with a lethality of {{monster.lethality}}
-            <button ng-click="vm.deleteMonster()" monster-id="{{monster._id}}">Delete</button>
-            <button ng-click="vm.editMonster()" monster-id="{{monster._id}}">Edit</button>
+            <button ng-click="vm.deleteMonster(monster._id)">Delete</button>
+            <button ng-click="vm.editMonster(monster._id)">Edit</button>
         </li>
     </ul>
     <div ng-show="vm.editBool">

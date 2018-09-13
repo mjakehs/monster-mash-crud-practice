@@ -3,9 +3,9 @@ let monsterApp = angular.module('MonsterApp', []);
 
 monsterApp.controller('MonsterController', ['$http', function($http ){
     let self = this;
+    $http.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
     self.monsters = []; 
     //$http.put()
-
     //building objectToSend
     self.newMonster = {};
     self.newMonster.name = '';
@@ -36,15 +36,28 @@ monsterApp.controller('MonsterController', ['$http', function($http ){
             console.log('Error: ', error);
         })
     }
-    //$http.delete()
     self.updateList();
 
-    self.deleteMonster = function(){
-
+    self.deleteMonster = function(monsterid){
+        self.deleteId = {};
+        self.deleteId._id = monsterid;
+        console.log(self.deleteId)
+        $http({
+            method: 'delete',
+            url: '/monsters',
+            data: self.deleteId
+        }).then(function(response){
+            self.updateList();
+        }).catch(function(error){
+            console.log('Error: ', error);
+        })
     };
 
-    self.editMonster = function(){
+    self.current_id = '';
+
+    self.editMonster = function(_id){
         self.editBool = !self.editBool;
+        self.current_id = _id;
     };
 
     self.editMosnter = {};
