@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <title>Monster Mash</title>
+</head>
+<body ng-app="MonsterApp" ng-controller="MonsterController as vm">
+  <ul>
+      <li ng-repeat="monster in vm.monsters">
+          {{monster.name}} is attending with a lethality of {{monster.lethality}}
+          <button ng-click="deleteMonster()" monster-id="{{monster._id}}">Delete</button>
+          <button ng-click="editMonster()" monster-id="{{monster._id}}">Edit</button>
+      </li>
+  </ul>
+</body>
+</html>
