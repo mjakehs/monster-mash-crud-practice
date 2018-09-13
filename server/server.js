@@ -6,7 +6,7 @@ const PORT = 5000;
 const app = express();
 
 app.use(express.static('server/public'));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use('/monsters', monsters);
 
 app.listen(PORT, () => {

@@ -5,7 +5,26 @@ monsterApp.controller('MonsterController', ['$http', function($http ){
     let self = this;
     self.monsters = []; 
     //$http.put()
-    //$http.post()
+    
+    //building objectToSend
+    self.newMonster = {};
+    self.newMonster.name = '';
+    self.newMonster.lethality = '';
+
+    self.addMonster = function(){
+        $http({
+            method: 'POST',
+            url: '/monsters',
+            data: self.newMonster
+        }).then(function(response){
+            console.log(response.status);
+            self.updateList();
+            self.newMonster.name = '';
+            self.newMonster.lethality = '';
+        }).catch(function(error){
+            console.log('Error: ', error);
+        })
+    }
     self.updateList = function(){
         $http({
             method: 'GET',

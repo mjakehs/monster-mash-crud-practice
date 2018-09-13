@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,13 +9,21 @@
     <script src="scripts/client.js"></script>
     <title>Monster Mash</title>
 </head>
+
 <body ng-app="MonsterApp" ng-controller="MonsterController as vm">
-  <ul>
-      <li ng-repeat="monster in vm.monsters">
-          {{monster.name}} is attending with a lethality of {{monster.lethality}}
-          <button ng-click="deleteMonster()" monster-id="{{monster._id}}">Delete</button>
-          <button ng-click="editMonster()" monster-id="{{monster._id}}">Edit</button>
-      </li>
-  </ul>
+    <h1>Monster Mash</h1>
+    <h3>Invite Some Monsters!</h3>
+    <input ng-model="vm.newMonster.name" type="text" placeholder="Monster Name">
+    <input ng-model="vm.newMonster.lethality" type="number" placeholder="Monster Lethality">
+    <button ng-click="vm.addMonster()">Add Monster</button>
+    <h3>Current Guest List</h3>
+    <ul>
+        <li ng-repeat="monster in vm.monsters">
+            {{monster.name}} is attending with a lethality of {{monster.lethality}}
+            <button ng-click="deleteMonster()" monster-id="{{monster._id}}">Delete</button>
+            <button ng-click="editMonster()" monster-id="{{monster._id}}">Edit</button>
+        </li>
+    </ul>
 </body>
+
 </html>

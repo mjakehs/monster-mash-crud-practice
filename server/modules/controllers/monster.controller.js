@@ -10,6 +10,7 @@ exports.monsterGet = (req, res) => {
 };
 
 exports.monsterPost = (req, res) => {
+    console.log(req.body);
     Monster.create(req.body).then((results) => {
         console.log(results);
         res.sendStatus(200);
@@ -21,7 +22,7 @@ exports.monsterPost = (req, res) => {
 
 exports.monsterPut = (req, res) => {
     Monster.updateOne({_id: req.body._id}, req.body.update).then( (results) => {
-        console.log(results);
+        console.log(results.data);
         res.sendStatus(200);
     }).catch((error) => {
         console.log('Error: ', error);
