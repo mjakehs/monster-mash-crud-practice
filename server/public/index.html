@@ -21,15 +21,15 @@
         <li ng-repeat="monster in vm.monsters">
             {{monster.name}} is attending with a lethality of {{monster.lethality}}
             <button ng-click="vm.deleteMonster(monster._id)">Delete</button>
-            <button ng-click="vm.editMonster(monster._id)">Edit</button>
+            <button ng-click="vm.editThisMonster(monster._id)">Edit</button>
         </li>
     </ul>
     <div ng-show="vm.editBool">
         <h3>Edit Monster</h3>
-        <input ng-model="vm.editMosnter.name" type="text" placeholder="Monster Name">
-        <input ng-model="vm.editMosnter.lethality" type="number" placeholder="Monster Lethality">
+        <input ng-model="vm.editMonster.name" type="text" placeholder="Monster Name">
+        <input ng-model="vm.editMonster.lethality" type="number" placeholder="Monster Lethality">
         <button ng-click="vm.editMonster()">Cancel</button>
-        <button ng-click="vm.putMonste()">Submit Edit</button>
+        <button ng-click="vm.putMonster()">Submit Edit</button>
     </div>
 </body>
 

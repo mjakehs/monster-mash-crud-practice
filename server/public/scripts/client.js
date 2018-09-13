@@ -4,6 +4,7 @@ let monsterApp = angular.module('MonsterApp', []);
 monsterApp.controller('MonsterController', ['$http', function($http ){
     let self = this;
     $http.defaults.headers.delete = { "Content-Type": "application/json;charset=utf-8" };
+
     self.monsters = []; 
     //$http.put()
     //building objectToSend
@@ -54,13 +55,25 @@ monsterApp.controller('MonsterController', ['$http', function($http ){
     };
 
     self.current_id = '';
-
-    self.editMonster = function(_id){
-        self.editBool = !self.editBool;
-        self.current_id = _id;
-    };
-
-    self.editMosnter = {};
+    self.editMonster = {};
     self.editMonster.name = '';
     self.editMonster.lethality = '';
+
+    self.editThisMonster = function(_id){
+        self.editBool = !self.editBool;
+        self.editMonster._id= _id;
+    };
+
+    self.putMonster = function(){
+        $http({
+            method: 'PUT',
+            url: '/monsters',
+            data: self.editMonster
+        }).then(function(response){
+            self.updateList();
+            self.editBool = false;
+        }).catch(function(error){
+            console.log('Error: ', error);
+        })
+    }
 }]);

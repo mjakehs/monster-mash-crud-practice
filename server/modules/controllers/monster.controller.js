@@ -21,7 +21,8 @@ exports.monsterPost = (req, res) => {
 }
 
 exports.monsterPut = (req, res) => {
-    Monster.updateOne({_id: req.body._id}, req.body.update).then( (results) => {
+    console.log(req.body);
+    Monster.updateOne({_id: req.body._id}, {name: req.body.name, lethality: req.body.lethality}).then( (results) => {
         console.log(results.data);
         res.sendStatus(200);
     }).catch((error) => {
