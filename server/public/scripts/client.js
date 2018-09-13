@@ -5,11 +5,13 @@ monsterApp.controller('MonsterController', ['$http', function($http ){
     let self = this;
     self.monsters = []; 
     //$http.put()
-    
+
     //building objectToSend
     self.newMonster = {};
     self.newMonster.name = '';
     self.newMonster.lethality = '';
+
+    self.editBool = false;
 
     self.addMonster = function(){
         $http({
@@ -36,4 +38,16 @@ monsterApp.controller('MonsterController', ['$http', function($http ){
     }
     //$http.delete()
     self.updateList();
+
+    self.deleteMonster = function(){
+
+    };
+
+    self.editMonster = function(){
+        self.editBool = !self.editBool;
+    };
+
+    self.editMosnter = {};
+    self.editMonster.name = '';
+    self.editMonster.lethality = '';
 }]);
